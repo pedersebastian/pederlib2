@@ -16,7 +16,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Peder Sebastian Martinsen \email{first.last@example.com}
+\strong{Maintainer}: Peder Sebastian Martinsen \email{peder.s.martinsen@gmail.com}
 
 }
 \keyword{internal}

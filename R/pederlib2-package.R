@@ -6,4 +6,5 @@
 #' @importFrom glue glue
 #' @importFrom lifecycle deprecated
 ## usethis namespace: end
+#' @import ggplot2
 NULL

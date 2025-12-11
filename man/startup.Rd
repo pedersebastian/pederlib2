@@ -4,7 +4,7 @@
 \alias{startup}
 \title{Start up}
 \usage{
-startup(type, ...)
+startup(type = 1, ...)
 }
 \arguments{
 \item{type}{with type}

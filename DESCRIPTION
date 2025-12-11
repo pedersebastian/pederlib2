@@ -2,17 +2,20 @@ Package: pederlib2
 Title: Personal package take two 
 Version: 0.0.0.9000
 Authors@R: 
-    person("Peder Sebastian", "Martinsen", , "first.last@example.com", role = c("aut", "cre"))
+    person("Peder Sebastian", "Martinsen", , "peder.s.martinsen@gmail.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat
 Config/testthat/edition: 3
+Depends:
+    R (>= 4.1)
 Imports: 
     glue,
     lifecycle,
-    rlang
+    rlang,
+    ggplot2
 URL: https://pedersebastian.github.io/pederlib2/
