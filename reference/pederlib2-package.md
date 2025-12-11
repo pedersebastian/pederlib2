@@ -10,4 +10,4 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Peder Sebastian Martinsen <first.last@example.com>
+**Maintainer**: Peder Sebastian Martinsen <peder.s.martinsen@gmail.com>

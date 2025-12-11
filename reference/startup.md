@@ -5,7 +5,7 @@ Start up
 ## Usage
 
 ``` r
-startup(type, ...)
+startup(type = 1, ...)
 ```
 
 ## Arguments
@@ -26,5 +26,6 @@ list of attached packages
 
 ``` r
 startup()
-#> NULL
+#> Warning: there is no package called ‘tidyverse’
+#> Warning: there is no package called ‘readxl’
 ```
