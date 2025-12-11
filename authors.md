@@ -2,16 +2,17 @@
 
 ## Authors
 
-- **First Last**. Author, maintainer.
+- **Peder Sebastian Martinsen**. Author, maintainer.
 
 ## Citation
 
-Last F (2025). *pederlib2: What the Package Does (One Line, Title
-Case)*. R package version 0.0.0.9000.
+Martinsen P (2025). *pederlib2: Personal package take two*. R package
+version 0.0.0.9000, <https://pedersebastian.github.io/pederlib2/>.
 
     @Manual{,
-      title = {pederlib2: What the Package Does (One Line, Title Case)},
-      author = {First Last},
+      title = {pederlib2: Personal package take two},
+      author = {Peder Sebastian Martinsen},
       year = {2025},
       note = {R package version 0.0.0.9000},
+      url = {https://pedersebastian.github.io/pederlib2/},
     }

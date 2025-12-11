@@ -1,7 +1,13 @@
-# pederlib2: What the Package Does (One Line, Title Case)
+# pederlib2: Personal package take two
 
 What the package does (one paragraph).
 
+## See also
+
+Useful links:
+
+- <https://pedersebastian.github.io/pederlib2/>
+
 ## Author
 
-**Maintainer**: First Last <first.last@example.com>
+**Maintainer**: Peder Sebastian Martinsen <first.last@example.com>
