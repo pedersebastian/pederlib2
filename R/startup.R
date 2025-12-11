@@ -1,5 +1,3 @@
-
-
 #' Start up
 #'
 #' @param type with type
@@ -25,5 +23,5 @@ startup <- function(type = 1, ...) {
   # if (!quiet) {
   #   cli::cli_alert_success("Geom defaults updated ✌️")
   # }
-  #suppressMessages(suppressWarnings(require(i, character.only = TRUE)))
+  # suppressMessages(suppressWarnings(require(i, character.only = TRUE)))
 }
