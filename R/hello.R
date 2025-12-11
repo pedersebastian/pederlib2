@@ -16,9 +16,3 @@
 hello <- function() {
   print("Hello, world!")
 }
-usethis::use_git()
-usethis::use_github()
-usethis::use_tidy_github()
-usethis::use_tidy_github_actions()
-usethis::use_tidy_github_labels()
-usethis::use_pkgdown_github_pages()
