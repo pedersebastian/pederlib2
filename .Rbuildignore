@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^pederlib2\.Rproj$
+^LICENSE\.md$
+^README\.Rmd$
+^cran-comments\.md$
