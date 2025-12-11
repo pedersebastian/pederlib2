@@ -4,12 +4,19 @@
 \name{pederlib2-package}
 \alias{pederlib2}
 \alias{pederlib2-package}
-\title{pederlib2: What the Package Does (One Line, Title Case)}
+\title{pederlib2: Personal package take two}
 \description{
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://pedersebastian.github.io/pederlib2/}
+}
+
+}
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com}
+\strong{Maintainer}: Peder Sebastian Martinsen \email{first.last@example.com}
 
 }
 \keyword{internal}

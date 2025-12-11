@@ -1,8 +1,8 @@
 Package: pederlib2
-Title: What the Package Does (One Line, Title Case)
+Title: Personal package take two 
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+    person("Peder Sebastian", "Martinsen", , "first.last@example.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -17,3 +17,4 @@ Imports:
     lifecycle,
     rlang,
     withr
+URL: https://pedersebastian.github.io/pederlib2/
