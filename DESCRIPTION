@@ -12,9 +12,7 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
-    cli,
     glue,
     lifecycle,
-    rlang,
-    withr
+    rlang
 URL: https://pedersebastian.github.io/pederlib2/
