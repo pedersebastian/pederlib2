@@ -1,5 +1,3 @@
-
-
 #' Start up
 #'
 #' @param ... packs to add
@@ -22,6 +20,7 @@ startup <- function(..., quiet = FALSE) {
   ggplot2::update_geom_defaults("rect", list(fill = "#1d3557", alpha = 0.9))
   ggplot2::update_geom_defaults("point", list(color = "#1d3557", alpha = 0.9))
 
+<<<<<<< HEAD
   type_1_info <- NULL
   type_2_info <- NULL
 
@@ -71,6 +70,12 @@ startup <- function(..., quiet = FALSE) {
   }
 
   invisible()
+=======
+  # if (!quiet) {
+  #   cli::cli_alert_success("Geom defaults updated ✌️")
+  # }
+  # suppressMessages(suppressWarnings(require(i, character.only = TRUE)))
+>>>>>>> 67fe1b9d630a8c14d383f6430ad2e67aa93fd0dd
 }
 
 attach_pkg <- function(pkg) {
