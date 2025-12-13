@@ -16,6 +16,9 @@ Depends:
 Imports: 
     glue,
     lifecycle,
+    cli,
     rlang,
-    ggplot2
+    ggplot2,
+    tidymodels, 
+    tidyverse
 URL: https://pedersebastian.github.io/pederlib2/

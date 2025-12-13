@@ -4,18 +4,21 @@
 \alias{startup}
 \title{Start up}
 \usage{
-startup(type = 1, ...)
+startup(..., quiet = FALSE)
 }
 \arguments{
-\item{type}{with type}
+\item{...}{packs to add}
 
-\item{...}{add more packs}
+\item{quiet}{description}
 }
 \value{
 list of attached packages
 }
 \description{
-Start up
+type = 1 - tidyverse + readxl
+type = 2 - tidymodels core pkg TODO
+type = 3 - tidymodel core + ext TODO
+type = 4 - web TODO
 }
 \examples{
 
