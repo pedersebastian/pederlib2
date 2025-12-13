@@ -7,20 +7,20 @@
 startup(..., quiet = FALSE)
 }
 \arguments{
-\item{...}{packs to add}
+\item{...}{optional numeric flags. Pass \code{2} to also attach tidymodels packages.}
 
-\item{quiet}{description}
+\item{quiet}{if \code{TRUE}, suppresses all messages}
 }
 \value{
-list of attached packages
+invisibly returns a character vector of attached package names
 }
 \description{
-type = 1 - tidyverse + readxl
-type = 2 - tidymodels core pkg TODO
-type = 3 - tidymodel core + ext TODO
-type = 4 - web TODO
+Attaches commonly used packages and sets ggplot2 defaults:
+\itemize{
+\item Default (no args): tidyverse + readxl
+\item \code{startup(2)}: adds tidymodels core packages
+}
 }
 \examples{
-
 startup()
 }

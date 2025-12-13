@@ -1,42 +1,29 @@
 #' Start up
 #'
-#' @param ... packs to add
-#' @param quiet description
+#' @param ... optional numeric flags. Pass `2` to also attach tidymodels packages.
+#' @param quiet if `TRUE`, suppresses all messages
 #' @description
-#' type = 1 - tidyverse + readxl
-#' type = 2 - tidymodels core pkg TODO
-#' type = 3 - tidymodel core + ext TODO
-#' type = 4 - web TODO
+#' Attaches commonly used packages and sets ggplot2 defaults:
+#' - Default (no args): tidyverse + readxl
+#' - `startup(2)`: adds tidymodels core packages
 #'
-#'
-#' @returns list of attached packages
+#' @returns invisibly returns a character vector of attached package names
 #' @export
 #'
 #' @examples
-#'
 #' startup()
 startup <- function(..., quiet = FALSE) {
   ggplot2::update_geom_defaults("rect", list(fill = "#1d3557", alpha = 0.9))
   ggplot2::update_geom_defaults("point", list(color = "#1d3557", alpha = 0.9))
   theme_output <-
     utils::capture.output(
-      {
-        ggplot2::theme_set(theme_pedr())
-      },
+      ggplot2::theme_set(theme_pedr()),
       type = "message"
     )
 
-  type_1_info <- NULL
   type_2_info <- NULL
 
-
-  if (rlang::dots_n(...) == 0) {
-    dots <- 1
-  } else {
-    dots <- rlang::dots_list(...)
-    dots <- unlist(dots)
-  }
-
+  dots <- if (rlang::dots_n(...) == 0) 1L else unlist(rlang::dots_list(...))
 
   type_1 <- c(
     "ggplot2",
@@ -66,48 +53,35 @@ startup <- function(..., quiet = FALSE) {
   )
 
   attached_pkg <- c(type_1, "readxl")
-  #### Tidyverse and readxl attach
 
-  map(c("tidyverse", "readxl"), \(x) attach_pkg(x))
+  walk(c("tidyverse", "readxl"), attach_pkg)
 
   type_1_info <- c(
     cli::rule(center = cli::col_blue(" * Tidyverse: * ")),
     map(type_1, \(x) print_pkg(x, TRUE)),
     map("readxl", \(x) print_pkg(x, FALSE))
   )
-  ###
-
 
   if (2 %in% dots) {
-    map(type_2, \(x) attach_pkg(x))
+    walk(type_2, attach_pkg)
     type_2_info <- c(
       cli::rule(center = cli::col_blue(" * Tidymodels: * ")),
       map(type_2, \(x) print_pkg(x, TRUE))
     )
-
     attached_pkg <- c(attached_pkg, type_2)
   }
 
-
-  ## ________________##
   msg <- c(
     cli::rule(cli::style_bold("Attaching packs:")),
     "",
-    type_1_info %||% "",
-    "",
-    type_2_info %||% "",
-    "",
-    ""
+    type_1_info,
+    if (!is.null(type_2_info)) c("", type_2_info)
   )
-
-
-  ## ________________##
-
 
   if (!quiet) {
     message(paste(msg, collapse = "\n"))
-    cli::cli(cli::cli_alert_success("Geom defaults updated"))
-    cli::cli(cli::cli_alert_success("Theme set to theme_peder()"))
+    cli::cli_alert_success("Geom defaults updated")
+    cli::cli_alert_success("Theme set to theme_pedr()")
     cat(theme_output)
   }
   invisible(attached_pkg)
@@ -116,10 +90,7 @@ startup <- function(..., quiet = FALSE) {
 attach_pkg <- function(pkg) {
   suppressWarnings(
     suppressPackageStartupMessages(
-      library(pkg,
-        character.only = TRUE,
-        warn.conflicts = FALSE
-      )
+      library(pkg, character.only = TRUE, warn.conflicts = FALSE)
     )
   )
 }
@@ -136,7 +107,8 @@ print_pkg <- function(pkg, indent = FALSE, symbol = cli::symbol$tick) {
   )
   if (indent) {
     return(paste0(
-      cli::style_bold(cli::symbol$em_dash), " ",
+      cli::style_bold(cli::symbol$em_dash),
+      " ",
       out
     ))
   }

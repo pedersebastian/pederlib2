@@ -6,7 +6,7 @@
 \alias{pederlib2-package}
 \title{pederlib2: Personal package take two}
 \description{
-What the package does (one paragraph).
+Personal package.
 }
 \seealso{
 Useful links:
