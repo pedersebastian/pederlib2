@@ -1,5 +1,3 @@
-
-
 #' Start up
 #'
 #' @param ... packs to add
@@ -18,7 +16,6 @@
 #'
 #' startup()
 startup <- function(..., quiet = FALSE) {
-
   ggplot2::update_geom_defaults("rect", list(fill = "#1d3557", alpha = 0.9))
   ggplot2::update_geom_defaults("point", list(color = "#1d3557", alpha = 0.9))
 
@@ -27,9 +24,7 @@ startup <- function(..., quiet = FALSE) {
 
   if (rlang::dots_n(...) == 0) {
     dots <- 1
-
-  }
-  else {
+  } else {
     dots <- rlang::dots_list(...)
     dots <- unlist(dots)
   }
@@ -45,8 +40,8 @@ startup <- function(..., quiet = FALSE) {
       map(tidyverse::tidyverse_packages(), \(x) print_pkg(x, TRUE)),
       map("readxl", \(x) print_pkg(x, FALSE))
     )
-
   }
+
 
 
   if (2 %in% dots) {
@@ -62,6 +57,9 @@ startup <- function(..., quiet = FALSE) {
 
 
   ##________________##
+
+  ## ________________##
+
   msg <- c(
     cli::rule(cli::style_bold("Attaching packs:")),
     "",
@@ -73,7 +71,7 @@ startup <- function(..., quiet = FALSE) {
   )
 
 
-  ##________________##
+  ## ________________##
 
 
   if (!quiet) {
@@ -91,20 +89,24 @@ attach_pkg <- function(pkg) {
 print_pkg <- function(pkg, indent = FALSE, symbol = cli::symbol$tick) {
   version <- as.character(utils::packageVersion(pkg))
 
+
   out <-  paste0(
     cli::col_green(symbol),
+
+  out <- paste0(
+    cli::col_green(cli::symbol$tick),
+
     " ",
     cli::col_blue(format(pkg)),
     " ",
     cli::ansi_align(version, 10)
-
   )
+
   if (indent) {
-    return(paste0(cli::style_bold(cli::symbol$em_dash)," ",
-                  out))
+    return(paste0(
+      cli::style_bold(cli::symbol$em_dash), " ",
+      out
+    ))
   }
   out
-
 }
-
-
