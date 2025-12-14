@@ -18,6 +18,11 @@
 startup <- function(..., quiet = FALSE) {
   ggplot2::update_geom_defaults("rect", list(fill = "#1d3557", alpha = 0.9))
   ggplot2::update_geom_defaults("point", list(color = "#1d3557", alpha = 0.9))
+  theme_output <-
+    utils::capture.output({
+      ggplot2::theme_set(theme_pedr())
+      },
+      type = "message")
 
   type_1_info <- NULL
   type_2_info <- NULL
@@ -30,7 +35,15 @@ startup <- function(..., quiet = FALSE) {
   }
 
 
-  type_2 <- c("broom", "dials", "dplyr", "ggplot2", "infer", "modeldata", "parsnip", "purrr", "recipes", "rsample", "tailor", "tidyr", "tune", "workflows", "workflowsets", "yardstick")
+  type_2 <- c("broom", "dials",
+              "dplyr", "ggplot2",
+              "infer", "modeldata",
+              "parsnip", "purrr",
+              "recipes", "rsample",
+              "tailor", "tidyr",
+              "tune", "workflows",
+              "workflowsets", "yardstick"
+              )
 
   if (1 %in% dots) {
     map(c("tidyverse", "readxl"), \(x) attach_pkg(x))
@@ -73,8 +86,9 @@ startup <- function(..., quiet = FALSE) {
   if (!quiet) {
     message(paste(msg, collapse = "\n"))
     cli::cli(cli::cli_alert_success("Geom defaults updated"))
+    cli::cli(cli::cli_alert_success("Theme set to theme_peder()"))
+    cat(theme_output)
   }
-
   invisible()
 }
 
