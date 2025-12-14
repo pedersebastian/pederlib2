@@ -19,6 +19,7 @@
 #' ggplot(mtcars, aes(mpg, disp)) +
 #' geom_point() +
 #' facet_wrap(vars(vs))
+#'
 theme_pedr <- function(base_size = 11,
                        strip_text_size = 12,
                        strip_text_margin = 5,
