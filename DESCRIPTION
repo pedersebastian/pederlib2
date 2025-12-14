@@ -19,6 +19,7 @@ Imports:
     cli,
     rlang,
     ggplot2,
-    tidymodels, 
-    tidyverse
+    tidyverse,
+    ggh4x,
+    systemfonts
 URL: https://pedersebastian.github.io/pederlib2/

@@ -35,8 +35,7 @@ startup <- function(..., quiet = FALSE) {
   }
 
 
-  type_2 <- c(tidymodels::tidymodels_packages())
-
+  type_2 <- c("broom", "dials", "dplyr", "ggplot2", "infer", "modeldata", "parsnip", "purrr", "recipes", "rsample", "tailor", "tidyr", "tune", "workflows", "workflowsets", "yardstick")
 
   if (1 %in% dots) {
     map(c("tidyverse", "readxl"), \(x) attach_pkg(x))
@@ -50,13 +49,25 @@ startup <- function(..., quiet = FALSE) {
   }
 
 
+  if (2 %in% dots) {
+    if (1 %in% dots) {
+      type_2 <- type_2[!type_2 %in% tidyverse::tidyverse_packages()]
+    }
+    map(type_2, \(x) attach_pkg(x))
+    type_2_info <- c(
+      cli::rule(center = cli::col_blue(" * Tidymodels: * ")),
+      map(type_2, \(x) print_pkg(x, TRUE))
+    )
+  }
+
+
   ##________________##
   msg <- c(
     cli::rule(cli::style_bold("Attaching packs:")),
     "",
     type_1_info %||% "",
     "",
-    "",
+    type_2_info %||% "",
     "",
     ""
   )
@@ -77,11 +88,11 @@ attach_pkg <- function(pkg) {
   suppressWarnings(suppressPackageStartupMessages(library(pkg, character.only = TRUE, warn.conflicts = FALSE)))
 }
 
-print_pkg <- function(pkg, indent = FALSE) {
+print_pkg <- function(pkg, indent = FALSE, symbol = cli::symbol$tick) {
   version <- as.character(utils::packageVersion(pkg))
 
   out <-  paste0(
-    cli::col_green(cli::symbol$tick),
+    cli::col_green(symbol),
     " ",
     cli::col_blue(format(pkg)),
     " ",
