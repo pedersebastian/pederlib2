@@ -27,6 +27,7 @@ list of attached packages
 
 ``` r
 startup()
+#> ! Finner ikke BentonSans Regular, bruker standard
 #> ── Attaching packs: ────────────────────────────────────────────────────────────
 #> 
 #> ───────────────────────────────  * Tidyverse: *  ───────────────────────────────
@@ -66,4 +67,5 @@ startup()
 #> 
 #> 
 #> ✔ Geom defaults updated
+#> ✔ Theme set to theme_peder()
 ```
