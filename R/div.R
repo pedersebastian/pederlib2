@@ -1,6 +1,3 @@
-
-
-
 #' List locales
 #'
 #' @returns a list of locale found
