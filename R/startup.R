@@ -96,7 +96,13 @@ startup <- function(..., quiet = FALSE) {
 }
 
 attach_pkg <- function(pkg) {
-  suppressWarnings(suppressPackageStartupMessages(library(pkg, character.only = TRUE, warn.conflicts = FALSE)))
+  suppressWarnings(
+    suppressPackageStartupMessages(
+      library(pkg,
+              character.only = TRUE,
+              warn.conflicts = FALSE)
+      )
+    )
 }
 
 print_pkg <- function(pkg, indent = FALSE, symbol = cli::symbol$tick) {
