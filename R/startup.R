@@ -36,6 +36,17 @@ startup <- function(..., quiet = FALSE) {
     dots <- unlist(dots)
   }
 
+  type_1 <- c(
+    "ggplot2",
+    "tibble",
+    "tidyr",
+    "readr",
+    "purrr",
+    "dplyr",
+    "stringr",
+    "forcats",
+    "lubridate"
+  )
 
   type_2 <- c(
     "broom", "dials",
@@ -53,7 +64,7 @@ startup <- function(..., quiet = FALSE) {
 
     type_1_info <- c(
       cli::rule(center = cli::col_blue(" * Tidyverse: * ")),
-      map(tidyverse::tidyverse_packages(), \(x) print_pkg(x, TRUE)),
+      map(type_1, \(x) print_pkg(x, TRUE)),
       map("readxl", \(x) print_pkg(x, FALSE))
     )
   }
@@ -61,7 +72,7 @@ startup <- function(..., quiet = FALSE) {
 
   if (2 %in% dots) {
     if (1 %in% dots) {
-      type_2 <- type_2[!type_2 %in% tidyverse::tidyverse_packages()]
+      type_2 <- type_2[!type_2 %in% type_1]
     }
     map(type_2, \(x) attach_pkg(x))
     type_2_info <- c(

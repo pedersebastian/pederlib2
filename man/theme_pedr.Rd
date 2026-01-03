@@ -45,9 +45,11 @@ theme
 Theme_pedr
 }
 \examples{
+
 library(ggplot2)
 ggplot(mtcars, aes(mpg, disp)) +
-  geom_point() +
-  facet_wrap(vars(vs))
+geom_point() +
+facet_wrap(vars(vs)) +
+theme_pedr(font_family = "Times New Roman")
 
 }
