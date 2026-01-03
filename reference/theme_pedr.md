@@ -68,11 +68,11 @@ theme
 ## Examples
 
 ``` r
+if (FALSE) { # \dontrun{
 library(ggplot2)
 ggplot(mtcars, aes(mpg, disp)) +
-geom_point() +
-facet_wrap(vars(vs)) +
-theme_pedr(font_family = "Times New Roman")
-#> ! Finner ikke Times New Roman, bruker standard
-
+  geom_point() +
+  facet_wrap(vars(vs)) +
+  theme_pedr(font_family = "Times New Roman")
+} # }
 ```
