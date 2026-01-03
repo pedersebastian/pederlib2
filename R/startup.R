@@ -38,7 +38,7 @@ startup <- function(..., quiet = FALSE) {
   }
 
 
-    type_1 <- c(
+  type_1 <- c(
     "ggplot2",
     "tibble",
     "tidyr",
@@ -66,20 +66,19 @@ startup <- function(..., quiet = FALSE) {
   )
 
   attached_pkg <- c(type_1, "readxl")
-#### Tidyverse and readxl attach
+  #### Tidyverse and readxl attach
 
-    map(c("tidyverse", "readxl"), \(x) attach_pkg(x))
+  map(c("tidyverse", "readxl"), \(x) attach_pkg(x))
 
-    type_1_info <- c(
-      cli::rule(center = cli::col_blue(" * Tidyverse: * ")),
-      map(type_1, \(x) print_pkg(x, TRUE)),
-      map("readxl", \(x) print_pkg(x, FALSE))
-    )
-###
+  type_1_info <- c(
+    cli::rule(center = cli::col_blue(" * Tidyverse: * ")),
+    map(type_1, \(x) print_pkg(x, TRUE)),
+    map("readxl", \(x) print_pkg(x, FALSE))
+  )
+  ###
 
 
   if (2 %in% dots) {
-
     map(type_2, \(x) attach_pkg(x))
     type_2_info <- c(
       cli::rule(center = cli::col_blue(" * Tidymodels: * ")),

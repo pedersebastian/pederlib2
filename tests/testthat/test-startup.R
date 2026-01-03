@@ -18,13 +18,10 @@ test_that(
       type_1_pkg
     )
 
-  skip_if_not_installed("tidymodels")
+    skip_if_not_installed("tidymodels")
     expect_setequal(
       startup(2, quiet = TRUE),
       c(type_1_pkg, type_2_pkg)
     )
-
-
   }
 )
-
