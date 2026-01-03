@@ -18,6 +18,7 @@ Komma
 \examples{
 library(ggplot2)
 ggplot(mtcars, aes(drat)) +
-geom_histogram() +
-scale_x_continuous(labels = komma()) + theme_minimal()
+  geom_histogram() +
+  scale_x_continuous(labels = komma()) +
+  theme_minimal()
 }

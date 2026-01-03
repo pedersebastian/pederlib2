@@ -10,7 +10,7 @@ base_pkg <- c(
   "base"
 )
 
-type_1 <- c(
+type_1_pkg <- c(
   "ggplot2",
   "tibble",
   "tidyr",
@@ -19,22 +19,19 @@ type_1 <- c(
   "dplyr",
   "stringr",
   "forcats",
-  "lubridate"
+  "lubridate",
+  "readxl"
 )
 
-type_2 <- c(
+type_2_pkg <- c(
   "broom",
   "dials",
-  "dplyr",
-  "ggplot2",
   "infer",
   "modeldata",
   "parsnip",
-  "purrr",
   "recipes",
   "rsample",
   "tailor",
-  "tidyr",
   "tune",
   "workflows",
   "workflowsets",

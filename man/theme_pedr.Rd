@@ -45,11 +45,11 @@ theme
 Theme_pedr
 }
 \examples{
-
+\dontrun{
 library(ggplot2)
 ggplot(mtcars, aes(mpg, disp)) +
-geom_point() +
-facet_wrap(vars(vs)) +
-theme_pedr(font_family = "Times New Roman")
-
+  geom_point() +
+  facet_wrap(vars(vs)) +
+  theme_pedr(font_family = "Times New Roman")
+}
 }

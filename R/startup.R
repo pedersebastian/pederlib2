@@ -29,6 +29,7 @@ startup <- function(..., quiet = FALSE) {
   type_1_info <- NULL
   type_2_info <- NULL
 
+
   if (rlang::dots_n(...) == 0) {
     dots <- 1
   } else {
@@ -36,7 +37,8 @@ startup <- function(..., quiet = FALSE) {
     dots <- unlist(dots)
   }
 
-  type_1 <- c(
+
+    type_1 <- c(
     "ggplot2",
     "tibble",
     "tidyr",
@@ -49,17 +51,23 @@ startup <- function(..., quiet = FALSE) {
   )
 
   type_2 <- c(
-    "broom", "dials",
-    "dplyr", "ggplot2",
-    "infer", "modeldata",
-    "parsnip", "purrr",
-    "recipes", "rsample",
-    "tailor", "tidyr",
-    "tune", "workflows",
-    "workflowsets", "yardstick"
+    "broom",
+    "dials",
+    "infer",
+    "modeldata",
+    "parsnip",
+    "recipes",
+    "rsample",
+    "tailor",
+    "tune",
+    "workflows",
+    "workflowsets",
+    "yardstick"
   )
 
-  if (1 %in% dots) {
+  attached_pkg <- c(type_1, "readxl")
+#### Tidyverse and readxl attach
+
     map(c("tidyverse", "readxl"), \(x) attach_pkg(x))
 
     type_1_info <- c(
@@ -67,18 +75,18 @@ startup <- function(..., quiet = FALSE) {
       map(type_1, \(x) print_pkg(x, TRUE)),
       map("readxl", \(x) print_pkg(x, FALSE))
     )
-  }
+###
 
 
   if (2 %in% dots) {
-    if (1 %in% dots) {
-      type_2 <- type_2[!type_2 %in% type_1]
-    }
+
     map(type_2, \(x) attach_pkg(x))
     type_2_info <- c(
       cli::rule(center = cli::col_blue(" * Tidymodels: * ")),
       map(type_2, \(x) print_pkg(x, TRUE))
     )
+
+    attached_pkg <- c(attached_pkg, type_2)
   }
 
 
@@ -103,7 +111,7 @@ startup <- function(..., quiet = FALSE) {
     cli::cli(cli::cli_alert_success("Theme set to theme_peder()"))
     cat(theme_output)
   }
-  invisible()
+  invisible(attached_pkg)
 }
 
 attach_pkg <- function(pkg) {
