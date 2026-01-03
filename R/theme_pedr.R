@@ -18,9 +18,9 @@
 #'
 #' library(ggplot2)
 #' ggplot(mtcars, aes(mpg, disp)) +
-#' geom_point() +
-#' facet_wrap(vars(vs)) +
-#' theme_pedr(font_family = "Times New Roman")
+#'   geom_point() +
+#'   facet_wrap(vars(vs)) +
+#'   theme_pedr(font_family = "Times New Roman")
 #'
 theme_pedr <- function(base_size = 11,
                        strip_text_size = 12,
