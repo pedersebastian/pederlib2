@@ -25,7 +25,7 @@ test_that("simple theme", {
     plot2
   )
 })
-#///
+# ///
 
 test_that("theme parameters affect plot appearance", {
   plot_large_text <- ggplot(mtcars, aes(mpg, disp)) +
@@ -100,8 +100,7 @@ test_that("invalid argument triggers warning in theme_minimal", {
   expect_error(
     ggplot(mtcars, aes(mpg, disp)) +
       geom_point() +
-      theme_pedr(regexp = "Finner ikke"
-  )
+      theme_pedr(regexp = "Finner ikke")
   )
 })
 
