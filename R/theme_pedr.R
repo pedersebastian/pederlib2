@@ -32,14 +32,23 @@ theme_pedr <- function(base_size = 11,
                        strip_color = "gray90",
                        font_family = "BentonSans Regular",
                        ...) {
-  parsed_font <- unlist(strsplit(font_family, " ", ))[[1]]
 
-  available_fonts <- systemfonts::system_fonts()$family
+  validate_theme(
+    base_size = base_size,
+    strip_text_size = strip_text_size,
+    strip_text_margin = strip_text_margin,
+    subtitle_size = subtitle_size,
+    subtitle_margin = subtitle_margin,
+    plot_title_size = plot_title_size,
+    plot_title_margin = plot_title_margin,
+    strip_color = strip_color
+  )
 
-  if (!any(grepl(parsed_font, available_fonts))) {
-    cli::cli(cli::cli_alert_warning("Finner ikke {font_family}, bruker standard"))
-    font_family <- NULL
-  }
+  font_family <-
+    valider_font(font_family = font_family)
+
+  #___________#
+
 
   out <- ggplot2::theme_minimal(
     base_family = font_family,
@@ -73,4 +82,105 @@ theme_pedr <- function(base_size = 11,
         family = font_family
       )
     )
+}
+
+
+
+validate_theme <- function(base_size,
+                           strip_text_size,
+                           strip_text_margin,
+                           subtitle_size,
+                           subtitle_margin,
+                           plot_title_size,
+                           plot_title_margin,
+                           strip_color) {
+  # Valider numeriske input
+  rlang::check_required(base_size)
+  if (!rlang::is_scalar_double(base_size) && !rlang::is_scalar_integer(base_size)) {
+    cli::cli_abort("{.arg base_size} must be a single number.")
+  }
+  if (base_size <= 0) {
+    cli::cli_abort("{.arg base_size} ma være mer enn 0.")
+  }
+
+  if (!rlang::is_scalar_double(strip_text_size) && !rlang::is_scalar_integer(strip_text_size)) {
+    cli::cli_abort("{.arg strip_text_size} ma være et enkelt tall.")
+  }
+  if (strip_text_size <= 0) {
+    cli::cli_abort("{.arg strip_text_size} ma være mer enn 0.")
+  }
+
+  if (!rlang::is_scalar_double(strip_text_margin) && !rlang::is_scalar_integer(strip_text_margin)) {
+    cli::cli_abort("{.arg strip_text_margin} ma være et enkelt tall.")
+  }
+  if (strip_text_margin < 0) {
+    cli::cli_abort("{.arg strip_text_margin} ma være et ikke-negativt tall.")
+  }
+
+  if (!rlang::is_scalar_double(subtitle_size) && !rlang::is_scalar_integer(subtitle_size)) {
+    cli::cli_abort("{.arg subtitle_size} ma være et enkelt tall.")
+  }
+  if (subtitle_size <= 0) {
+    cli::cli_abort("{.arg subtitle_size} ma være mer enn 0.")
+  }
+
+  if (!rlang::is_scalar_double(subtitle_margin) && !rlang::is_scalar_integer(subtitle_margin)) {
+    cli::cli_abort("{.arg subtitle_margin} ma være et enkelt tall.")
+  }
+  if (subtitle_margin < 0) {
+    cli::cli_abort("{.arg subtitle_margin} ma være et ikke-negativt tall.")
+  }
+
+  if (!rlang::is_scalar_double(plot_title_size) && !rlang::is_scalar_integer(plot_title_size)) {
+
+    cli::cli_abort("{.arg plot_title_size} ma være et enkelt tall.")
+  }
+  if (plot_title_size <= 0) {
+    cli::cli_abort("{.arg plot_title_size} ma være mer enn 0.")
+  }
+
+  if (!rlang::is_scalar_double(plot_title_margin) && !rlang::is_scalar_integer(plot_title_margin)) {
+    cli::cli_abort("{.arg plot_title_margin} ma være et enkelt tall.")
+  }
+  if (plot_title_margin < 0) {
+    cli::cli_abort("{.arg plot_title_margin} ma være et ikke-negativt tall.")
+  }
+
+  # Valider strip_color
+  if (!rlang::is_string(strip_color)) {
+    cli::cli_abort("{.arg strip_color} ma være en enkelt tekststreng.")
+  }
+
+  rlang::check_installed("grDevices")
+  # Sjekk at fargen er gyldig
+  tryCatch(
+    grDevices::col2rgb(strip_color),
+    error = function(e) {
+      cli::cli_abort("{.arg strip_color} er ikke en gyldig farge: {.val {strip_color}}")
+    }
+  )
+
+
+}
+
+
+valider_font <- function(font_family) {
+  # Valider font_family
+  if (!rlang::is_string(font_family)) {
+    cli::cli_abort("{.arg font_family} must be a single string.")
+  }
+
+  parsed_font <- unlist(strsplit(font_family, " ", ))[[1]]
+
+  available_fonts <- systemfonts::system_fonts()$family
+
+  font_exist <- any(grepl(parsed_font, available_fonts, ignore.case = TRUE))
+
+  if (!font_exist) {
+    cli::cli_alert_warning(
+      "Finner ikke fonten {.val {font_family}}, bruker systemstandard"
+    )
+    font_family <- NULL
+  }
+  return(font_family)
 }

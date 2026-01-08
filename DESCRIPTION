@@ -12,7 +12,8 @@ Suggests:
     testthat,
     tidyverse,
     tidymodels,
-    vdiffr
+    vdiffr,
+    grDevices
 Config/testthat/edition: 3
 Depends:
     R (>= 4.1)
