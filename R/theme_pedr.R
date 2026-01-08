@@ -100,54 +100,54 @@ validate_theme <- function(base_size,
     cli::cli_abort("{.arg base_size} must be a single number.")
   }
   if (base_size <= 0) {
-    cli::cli_abort("{.arg base_size} ma være mer enn 0.")
+    cli::cli_abort("{.arg base_size} ma vaere mer enn 0.")
   }
 
   if (!rlang::is_scalar_double(strip_text_size) && !rlang::is_scalar_integer(strip_text_size)) {
-    cli::cli_abort("{.arg strip_text_size} ma være et enkelt tall.")
+    cli::cli_abort("{.arg strip_text_size} ma vaere et enkelt tall.")
   }
   if (strip_text_size <= 0) {
-    cli::cli_abort("{.arg strip_text_size} ma være mer enn 0.")
+    cli::cli_abort("{.arg strip_text_size} ma vaere mer enn 0.")
   }
 
   if (!rlang::is_scalar_double(strip_text_margin) && !rlang::is_scalar_integer(strip_text_margin)) {
-    cli::cli_abort("{.arg strip_text_margin} ma være et enkelt tall.")
+    cli::cli_abort("{.arg strip_text_margin} ma vaere et enkelt tall.")
   }
   if (strip_text_margin < 0) {
-    cli::cli_abort("{.arg strip_text_margin} ma være et ikke-negativt tall.")
+    cli::cli_abort("{.arg strip_text_margin} ma vaere et ikke-negativt tall.")
   }
 
   if (!rlang::is_scalar_double(subtitle_size) && !rlang::is_scalar_integer(subtitle_size)) {
-    cli::cli_abort("{.arg subtitle_size} ma være et enkelt tall.")
+    cli::cli_abort("{.arg subtitle_size} ma vaere et enkelt tall.")
   }
   if (subtitle_size <= 0) {
-    cli::cli_abort("{.arg subtitle_size} ma være mer enn 0.")
+    cli::cli_abort("{.arg subtitle_size} ma vaere mer enn 0.")
   }
 
   if (!rlang::is_scalar_double(subtitle_margin) && !rlang::is_scalar_integer(subtitle_margin)) {
-    cli::cli_abort("{.arg subtitle_margin} ma være et enkelt tall.")
+    cli::cli_abort("{.arg subtitle_margin} ma vaere et enkelt tall.")
   }
   if (subtitle_margin < 0) {
-    cli::cli_abort("{.arg subtitle_margin} ma være et ikke-negativt tall.")
+    cli::cli_abort("{.arg subtitle_margin} ma vaere et ikke-negativt tall.")
   }
 
   if (!rlang::is_scalar_double(plot_title_size) && !rlang::is_scalar_integer(plot_title_size)) {
-    cli::cli_abort("{.arg plot_title_size} ma være et enkelt tall.")
+    cli::cli_abort("{.arg plot_title_size} ma vaere et enkelt tall.")
   }
   if (plot_title_size <= 0) {
-    cli::cli_abort("{.arg plot_title_size} ma være mer enn 0.")
+    cli::cli_abort("{.arg plot_title_size} ma vaere mer enn 0.")
   }
 
   if (!rlang::is_scalar_double(plot_title_margin) && !rlang::is_scalar_integer(plot_title_margin)) {
-    cli::cli_abort("{.arg plot_title_margin} ma være et enkelt tall.")
+    cli::cli_abort("{.arg plot_title_margin} ma vaere et enkelt tall.")
   }
   if (plot_title_margin < 0) {
-    cli::cli_abort("{.arg plot_title_margin} ma være et ikke-negativt tall.")
+    cli::cli_abort("{.arg plot_title_margin} ma vaere et ikke-negativt tall.")
   }
 
   # Valider strip_color
   if (!rlang::is_string(strip_color)) {
-    cli::cli_abort("{.arg strip_color} ma være en enkelt tekststreng.")
+    cli::cli_abort("{.arg strip_color} ma vaere en enkelt tekststreng.")
   }
 
   rlang::check_installed("grDevices")
