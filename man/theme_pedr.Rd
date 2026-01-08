@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme_pedr.R
 \name{theme_pedr}
 \alias{theme_pedr}
-\title{Theme_pedr}
+\title{Theme_pedr - Custom ggplot2 theme}
 \usage{
 theme_pedr(
   base_size = 11,
@@ -18,31 +18,33 @@ theme_pedr(
 )
 }
 \arguments{
-\item{base_size}{x}
+\item{base_size}{Base font size in points (default: 11)}
 
-\item{strip_text_size}{x}
+\item{strip_text_size}{Facet strip text size in points (default: 12)}
 
-\item{strip_text_margin}{x}
+\item{strip_text_margin}{Bottom margin for strip text in points (default: 5)}
 
-\item{subtitle_size}{x}
+\item{subtitle_size}{Subtitle text size in points (default: 13)}
 
-\item{subtitle_margin}{x}
+\item{subtitle_margin}{Bottom margin for subtitle in points (default: 10)}
 
-\item{plot_title_size}{x}
+\item{plot_title_size}{Plot title text size in points (default: 16)}
 
-\item{plot_title_margin}{x}
+\item{plot_title_margin}{Bottom margin for plot title in points (default: 10)}
 
-\item{strip_color}{x}
+\item{strip_color}{Background color for facet strips (default: "gray90").
+Must be a valid R color name or hex code.}
 
-\item{font_family}{x}
+\item{font_family}{Font family to use (default: "BentonSans Regular").
+If font is not available, falls back to system default.}
 
-\item{...}{passed on to theme_minimal}
+\item{...}{Additional arguments passed to theme_minimal()}
 }
 \value{
-theme
+A ggplot2 theme object
 }
 \description{
-Theme_pedr
+Theme_pedr - Custom ggplot2 theme
 }
 \examples{
 \dontrun{
