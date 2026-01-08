@@ -102,7 +102,7 @@ test_that("plot_title_margin validation works", {
 
   expect_error(
     theme_pedr(plot_title_margin = -8),
-    "plot_title_margin. ma være et ikke-negativt tall"
+    "plot_title_margin.* must be a non-negative number."
   )
 
   expect_s3_class(theme_pedr(plot_title_margin = 0), "theme")

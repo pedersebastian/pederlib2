@@ -100,54 +100,54 @@ validate_theme <- function(base_size,
     cli::cli_abort("{.arg base_size} must be a single number.")
   }
   if (base_size <= 0) {
-    cli::cli_abort("{.arg base_size} ma vaere mer enn 0.")
+    cli::cli_abort("{.arg base_size} must be greater than 0.")
   }
 
   if (!rlang::is_scalar_double(strip_text_size) && !rlang::is_scalar_integer(strip_text_size)) {
-    cli::cli_abort("{.arg strip_text_size} ma vaere et enkelt tall.")
+    cli::cli_abort("{.arg strip_text_size} must be a single number.")
   }
   if (strip_text_size <= 0) {
-    cli::cli_abort("{.arg strip_text_size} ma vaere mer enn 0.")
+    cli::cli_abort("{.arg strip_text_size} must be greater than 0.")
   }
 
   if (!rlang::is_scalar_double(strip_text_margin) && !rlang::is_scalar_integer(strip_text_margin)) {
-    cli::cli_abort("{.arg strip_text_margin} ma vaere et enkelt tall.")
+    cli::cli_abort("{.arg strip_text_margin} must be a single number.")
   }
   if (strip_text_margin < 0) {
-    cli::cli_abort("{.arg strip_text_margin} ma vaere et ikke-negativt tall.")
+    cli::cli_abort("{.arg strip_text_margin} must be a non-negative number.")
   }
 
   if (!rlang::is_scalar_double(subtitle_size) && !rlang::is_scalar_integer(subtitle_size)) {
-    cli::cli_abort("{.arg subtitle_size} ma vaere et enkelt tall.")
+    cli::cli_abort("{.arg subtitle_size} must be a single number.")
   }
   if (subtitle_size <= 0) {
-    cli::cli_abort("{.arg subtitle_size} ma vaere mer enn 0.")
+    cli::cli_abort("{.arg subtitle_size} must be greater than 0.")
   }
 
   if (!rlang::is_scalar_double(subtitle_margin) && !rlang::is_scalar_integer(subtitle_margin)) {
-    cli::cli_abort("{.arg subtitle_margin} ma vaere et enkelt tall.")
+    cli::cli_abort("{.arg subtitle_margin} must be a single number.")
   }
   if (subtitle_margin < 0) {
-    cli::cli_abort("{.arg subtitle_margin} ma vaere et ikke-negativt tall.")
+    cli::cli_abort("{.arg subtitle_margin} must be a non-negative number.")
   }
 
   if (!rlang::is_scalar_double(plot_title_size) && !rlang::is_scalar_integer(plot_title_size)) {
-    cli::cli_abort("{.arg plot_title_size} ma vaere et enkelt tall.")
+    cli::cli_abort("{.arg plot_title_size} must be a single number.")
   }
   if (plot_title_size <= 0) {
-    cli::cli_abort("{.arg plot_title_size} ma vaere mer enn 0.")
+    cli::cli_abort("{.arg plot_title_size} must be greater than 0.")
   }
 
   if (!rlang::is_scalar_double(plot_title_margin) && !rlang::is_scalar_integer(plot_title_margin)) {
-    cli::cli_abort("{.arg plot_title_margin} ma vaere et enkelt tall.")
+    cli::cli_abort("{.arg plot_title_margin} must be a single number.")
   }
   if (plot_title_margin < 0) {
-    cli::cli_abort("{.arg plot_title_margin} ma vaere et ikke-negativt tall.")
+    cli::cli_abort("{.arg plot_title_margin} must be a non-negative number.")
   }
 
   # Valider strip_color
   if (!rlang::is_string(strip_color)) {
-    cli::cli_abort("{.arg strip_color} ma vaere en enkelt tekststreng.")
+    cli::cli_abort("{.arg strip_color} must be a single string.")
   }
 
   rlang::check_installed("grDevices")
@@ -155,14 +155,14 @@ validate_theme <- function(base_size,
   tryCatch(
     grDevices::col2rgb(strip_color),
     error = function(e) {
-      cli::cli_abort("{.arg strip_color} er ikke en gyldig farge: {.val {strip_color}}")
+      cli::cli_abort("{.arg strip_color} is not a valid colour: {.val {strip_color}}")
     }
   )
 }
 
 
 valider_font <- function(font_family) {
-  # Valider font_family
+  # Validated font_family
   if (!rlang::is_string(font_family)) {
     cli::cli_abort("{.arg font_family} must be a single string.")
   }
@@ -175,7 +175,7 @@ valider_font <- function(font_family) {
 
   if (!font_exist) {
     cli::cli_alert_warning(
-      "Finner ikke fonten {.val {font_family}}, bruker systemstandard"
+      "Can not find the font {.val {font_family}}, will use the standard font."
     )
     font_family <- NULL
   }
