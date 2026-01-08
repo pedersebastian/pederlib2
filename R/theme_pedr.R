@@ -34,7 +34,9 @@ theme_pedr <- function(base_size = 11,
                        ...) {
   parsed_font <- unlist(strsplit(font_family, " ", ))[[1]]
 
-  if (!any(grepl(parsed_font, systemfonts::system_fonts()$family))) {
+  available_fonts <- systemfonts::system_fonts()$family
+
+  if (!any(grepl(parsed_font, available_fonts))) {
     cli::cli(cli::cli_alert_warning("Finner ikke {font_family}, bruker standard"))
     font_family <- NULL
   }
