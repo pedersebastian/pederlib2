@@ -34,7 +34,6 @@ theme_pedr <- function(base_size = 11,
                        strip_color = "gray90",
                        font_family = "BentonSans Regular",
                        ...) {
-
   validate_theme(
     base_size = base_size,
     strip_text_size = strip_text_size,
@@ -49,7 +48,7 @@ theme_pedr <- function(base_size = 11,
   font_family <-
     valider_font(font_family = font_family)
 
-  #___________#
+  # ___________#
 
 
   out <- ggplot2::theme_minimal(
@@ -85,7 +84,6 @@ theme_pedr <- function(base_size = 11,
       )
     )
 }
-
 
 
 validate_theme <- function(base_size,
@@ -134,7 +132,6 @@ validate_theme <- function(base_size,
   }
 
   if (!rlang::is_scalar_double(plot_title_size) && !rlang::is_scalar_integer(plot_title_size)) {
-
     cli::cli_abort("{.arg plot_title_size} ma være et enkelt tall.")
   }
   if (plot_title_size <= 0) {
@@ -161,8 +158,6 @@ validate_theme <- function(base_size,
       cli::cli_abort("{.arg strip_color} er ikke en gyldig farge: {.val {strip_color}}")
     }
   )
-
-
 }
 
 
