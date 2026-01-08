@@ -27,7 +27,7 @@ list of attached packages
 
 ``` r
 startup()
-#> ! Finner ikke fonten "BentonSans Regular", bruker systemstandard
+#> ! Can not find the font "BentonSans Regular", will use the standard font.
 #> ── Attaching packs: ────────────────────────────────────────────────────────────
 #> 
 #> ───────────────────────────────  * Tidyverse: *  ───────────────────────────────
