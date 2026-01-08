@@ -1,17 +1,19 @@
-#' Theme_pedr
+#' Theme_pedr - Custom ggplot2 theme
 #'
-#' @param base_size x
-#' @param strip_text_size x
-#' @param strip_text_margin x
-#' @param subtitle_size x
-#' @param subtitle_margin x
-#' @param plot_title_size x
-#' @param plot_title_margin x
-#' @param strip_color x
-#' @param font_family x
-#' @param ... passed on to theme_minimal
+#' @param base_size Base font size in points (default: 11)
+#' @param strip_text_size Facet strip text size in points (default: 12)
+#' @param strip_text_margin Bottom margin for strip text in points (default: 5)
+#' @param subtitle_size Subtitle text size in points (default: 13)
+#' @param subtitle_margin Bottom margin for subtitle in points (default: 10)
+#' @param plot_title_size Plot title text size in points (default: 16)
+#' @param plot_title_margin Bottom margin for plot title in points (default: 10)
+#' @param strip_color Background color for facet strips (default: "gray90").
+#'   Must be a valid R color name or hex code.
+#' @param font_family Font family to use (default: "BentonSans Regular").
+#'   If font is not available, falls back to system default.
+#' @param ... Additional arguments passed to theme_minimal()
 #'
-#' @returns theme
+#' @returns A ggplot2 theme object
 #' @export
 #'
 #' @examples
@@ -32,6 +34,7 @@ theme_pedr <- function(base_size = 11,
                        strip_color = "gray90",
                        font_family = "BentonSans Regular",
                        ...) {
+
   validate_theme(
     base_size = base_size,
     strip_text_size = strip_text_size,
@@ -46,7 +49,7 @@ theme_pedr <- function(base_size = 11,
   font_family <-
     valider_font(font_family = font_family)
 
-  # ___________#
+  #___________#
 
 
   out <- ggplot2::theme_minimal(
@@ -82,6 +85,7 @@ theme_pedr <- function(base_size = 11,
       )
     )
 }
+
 
 
 validate_theme <- function(base_size,
@@ -130,6 +134,7 @@ validate_theme <- function(base_size,
   }
 
   if (!rlang::is_scalar_double(plot_title_size) && !rlang::is_scalar_integer(plot_title_size)) {
+
     cli::cli_abort("{.arg plot_title_size} ma være et enkelt tall.")
   }
   if (plot_title_size <= 0) {
@@ -156,6 +161,8 @@ validate_theme <- function(base_size,
       cli::cli_abort("{.arg strip_color} er ikke en gyldig farge: {.val {strip_color}}")
     }
   )
+
+
 }
 
 
