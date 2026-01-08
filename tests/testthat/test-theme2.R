@@ -152,7 +152,6 @@ test_that("font_family validation works", {
 })
 
 test_that("invalid font family gives warning but still works", {
-
   # Theme skal fortsatt bli laget selv med ugyldig font
   suppressWarnings({
     theme_obj <- theme_pedr(font_family = "ThisFontDoesNotExist999")
@@ -164,7 +163,7 @@ test_that("multiple validation errors are caught independently", {
   # Test at hver parameter valideres uavhengig
   expect_error(
     theme_pedr(base_size = -1, strip_text_size = "invalid"),
-    "base_size"  # Første feil skal fanges først
+    "base_size" # Første feil skal fanges først
   )
 })
 
@@ -172,7 +171,7 @@ test_that("valid edge case values work", {
   # Test gyldige edge cases
   expect_s3_class(
     theme_pedr(
-      base_size = 0.1,  # Veldig liten men positiv
+      base_size = 0.1, # Veldig liten men positiv
       strip_text_margin = 0,
       subtitle_margin = 0,
       plot_title_margin = 0
@@ -182,7 +181,7 @@ test_that("valid edge case values work", {
 
   expect_s3_class(
     theme_pedr(
-      base_size = 100,  # Veldig stor
+      base_size = 100, # Veldig stor
       strip_text_size = 50
     ),
     "theme"
@@ -191,8 +190,8 @@ test_that("valid edge case values work", {
 
 test_that("integer and double values both work", {
   # Test at bade integer og double godtas
-  expect_s3_class(theme_pedr(base_size = 12L), "theme")  # integer
-  expect_s3_class(theme_pedr(base_size = 12.5), "theme")  # double
+  expect_s3_class(theme_pedr(base_size = 12L), "theme") # integer
+  expect_s3_class(theme_pedr(base_size = 12.5), "theme") # double
 
   expect_s3_class(theme_pedr(strip_text_margin = 5L), "theme")
   expect_s3_class(theme_pedr(strip_text_margin = 5.5), "theme")
