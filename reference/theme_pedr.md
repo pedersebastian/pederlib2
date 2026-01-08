@@ -1,6 +1,6 @@
-# Theme_pedr
+# Theme_pedr - Custom ggplot2 theme
 
-Theme_pedr
+Theme_pedr - Custom ggplot2 theme
 
 ## Usage
 
@@ -23,47 +23,49 @@ theme_pedr(
 
 - base_size:
 
-  x
+  Base font size in points (default: 11)
 
 - strip_text_size:
 
-  x
+  Facet strip text size in points (default: 12)
 
 - strip_text_margin:
 
-  x
+  Bottom margin for strip text in points (default: 5)
 
 - subtitle_size:
 
-  x
+  Subtitle text size in points (default: 13)
 
 - subtitle_margin:
 
-  x
+  Bottom margin for subtitle in points (default: 10)
 
 - plot_title_size:
 
-  x
+  Plot title text size in points (default: 16)
 
 - plot_title_margin:
 
-  x
+  Bottom margin for plot title in points (default: 10)
 
 - strip_color:
 
-  x
+  Background color for facet strips (default: "gray90"). Must be a valid
+  R color name or hex code.
 
 - font_family:
 
-  x
+  Font family to use (default: "BentonSans Regular"). If font is not
+  available, falls back to system default.
 
 - ...:
 
-  passed on to theme_minimal
+  Additional arguments passed to theme_minimal()
 
 ## Value
 
-theme
+A ggplot2 theme object
 
 ## Examples
 

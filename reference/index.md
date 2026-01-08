@@ -9,4 +9,4 @@
 - [`startup()`](https://pedersebastian.github.io/pederlib2/reference/startup.md)
   : Start up
 - [`theme_pedr()`](https://pedersebastian.github.io/pederlib2/reference/theme_pedr.md)
-  : Theme_pedr
+  : Theme_pedr - Custom ggplot2 theme
