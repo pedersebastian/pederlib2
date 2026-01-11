@@ -70,11 +70,9 @@ A ggplot2 theme object
 ## Examples
 
 ``` r
-if (FALSE) { # \dontrun{
 library(ggplot2)
 ggplot(mtcars, aes(mpg, disp)) +
   geom_point() +
   facet_wrap(vars(vs)) +
-  theme_pedr(font_family = "Times New Roman")
-} # }
+  theme_pedr(font_family = "serif")
 ```
