@@ -53,7 +53,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
          with:
-           extra-packages: |
+           extra-packages:
              any::rcmdcheck
              any::parsnip
           needs: check
