@@ -16,5 +16,5 @@ Informed message
 
 ``` r
 to_tribble()
-#> Error in to_tribble(): The package "timesaveR" is required.
+#> use to_tribble() - from github LukasWallrich/timesaveR
 ```
