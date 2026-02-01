@@ -48,7 +48,6 @@ theme_pedr <- function(base_size = 11,
 
   # ___________#
 
-
   out <- ggplot2::theme_minimal(
     base_family = font_family,
     base_size = base_size, ...
@@ -92,7 +91,7 @@ validate_theme <- function(base_size,
                            plot_title_size,
                            plot_title_margin,
                            strip_color) {
-  # Valider numeriske input
+  # Validate numeric input
   rlang::check_required(base_size)
   if (!rlang::is_scalar_double(base_size) && !rlang::is_scalar_integer(base_size)) {
     cli::cli_abort("{.arg base_size} must be a single number.")
@@ -143,13 +142,13 @@ validate_theme <- function(base_size,
     cli::cli_abort("{.arg plot_title_margin} must be a non-negative number.")
   }
 
-  # Valider strip_color
+  # Validate strip_color
   if (!rlang::is_string(strip_color)) {
     cli::cli_abort("{.arg strip_color} must be a single string.")
   }
 
   rlang::check_installed("grDevices")
-  # Sjekk at fargen er gyldig
+  # Validate colour input
   tryCatch(
     grDevices::col2rgb(strip_color),
     error = function(e) {
