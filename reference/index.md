@@ -10,3 +10,5 @@
   : Start up
 - [`theme_pedr()`](https://pedersebastian.github.io/pederlib2/reference/theme_pedr.md)
   : Theme_pedr - Custom ggplot2 theme
+- [`to_tribble()`](https://pedersebastian.github.io/pederlib2/reference/to_tribble.md)
+  : To tribble
