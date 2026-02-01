@@ -2,7 +2,6 @@ library(ggplot2)
 library(vdiffr)
 
 
-
 test_that("base_size validation works", {
   expect_error(
     theme_pedr(base_size = "10")
