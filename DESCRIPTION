@@ -3,7 +3,7 @@ Title: Personal package take two
 Version: 0.0.1
 Authors@R: 
     person("Peder Sebastian", "Martinsen", , "peder.s.martinsen@gmail.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: Personal package. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
