@@ -6,8 +6,10 @@
 #' @examples
 #' list_locale()
 list_locale <- function() {
-  locales <- system("locale -a", intern = TRUE)
-  sort(locales)
+  if (.Platform$OS.type == "windows") {
+    cli::cli_abort("{.fn list_locale} is not supported on Windows.")
+  }
+  sort(system("locale -a", intern = TRUE))
 }
 
 

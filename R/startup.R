@@ -101,7 +101,7 @@ print_pkg <- function(pkg, indent = FALSE, symbol = cli::symbol$tick) {
   out <- paste0(
     cli::col_green(symbol),
     " ",
-    cli::col_blue(format(pkg)),
+    cli::col_blue(format(pkg, width = 12)),
     " ",
     cli::ansi_align(version, 10)
   )

@@ -96,7 +96,7 @@ test_that("theme works with multiple facet rows", {
   )
 })
 
-test_that("invalid argument triggers warning in theme_minimal", {
+test_that("invalid argument triggers error in theme_minimal", {
   expect_error(
     ggplot(mtcars, aes(mpg, disp)) +
       geom_point() +

@@ -1,6 +1,4 @@
 library(ggplot2)
-library(vdiffr)
-
 
 test_that("base_size validation works", {
   expect_error(

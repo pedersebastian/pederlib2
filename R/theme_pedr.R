@@ -44,7 +44,7 @@ theme_pedr <- function(base_size = 11,
   )
 
   font_family <-
-    valider_font(font_family = font_family)
+    validate_font(font_family = font_family)
 
   # ___________#
 
@@ -83,6 +83,28 @@ theme_pedr <- function(base_size = 11,
 }
 
 
+check_positive_number <- function(x,
+                                  arg = rlang::caller_arg(x),
+                                  call = rlang::caller_env()) {
+  if (!rlang::is_scalar_double(x) && !rlang::is_scalar_integer(x)) {
+    cli::cli_abort("{.arg {arg}} must be a single number.", call = call)
+  }
+  if (x <= 0) {
+    cli::cli_abort("{.arg {arg}} must be greater than 0.", call = call)
+  }
+}
+
+check_nonneg_number <- function(x,
+                                arg = rlang::caller_arg(x),
+                                call = rlang::caller_env()) {
+  if (!rlang::is_scalar_double(x) && !rlang::is_scalar_integer(x)) {
+    cli::cli_abort("{.arg {arg}} must be a single number.", call = call)
+  }
+  if (x < 0) {
+    cli::cli_abort("{.arg {arg}} must be a non-negative number.", call = call)
+  }
+}
+
 validate_theme <- function(base_size,
                            strip_text_size,
                            strip_text_margin,
@@ -91,64 +113,20 @@ validate_theme <- function(base_size,
                            plot_title_size,
                            plot_title_margin,
                            strip_color) {
-  # Validate numeric input
   rlang::check_required(base_size)
-  if (!rlang::is_scalar_double(base_size) && !rlang::is_scalar_integer(base_size)) {
-    cli::cli_abort("{.arg base_size} must be a single number.")
-  }
-  if (base_size <= 0) {
-    cli::cli_abort("{.arg base_size} must be greater than 0.")
-  }
+  check_positive_number(base_size)
+  check_positive_number(strip_text_size)
+  check_nonneg_number(strip_text_margin)
+  check_positive_number(subtitle_size)
+  check_nonneg_number(subtitle_margin)
+  check_positive_number(plot_title_size)
+  check_nonneg_number(plot_title_margin)
 
-  if (!rlang::is_scalar_double(strip_text_size) && !rlang::is_scalar_integer(strip_text_size)) {
-    cli::cli_abort("{.arg strip_text_size} must be a single number.")
-  }
-  if (strip_text_size <= 0) {
-    cli::cli_abort("{.arg strip_text_size} must be greater than 0.")
-  }
-
-  if (!rlang::is_scalar_double(strip_text_margin) && !rlang::is_scalar_integer(strip_text_margin)) {
-    cli::cli_abort("{.arg strip_text_margin} must be a single number.")
-  }
-  if (strip_text_margin < 0) {
-    cli::cli_abort("{.arg strip_text_margin} must be a non-negative number.")
-  }
-
-  if (!rlang::is_scalar_double(subtitle_size) && !rlang::is_scalar_integer(subtitle_size)) {
-    cli::cli_abort("{.arg subtitle_size} must be a single number.")
-  }
-  if (subtitle_size <= 0) {
-    cli::cli_abort("{.arg subtitle_size} must be greater than 0.")
-  }
-
-  if (!rlang::is_scalar_double(subtitle_margin) && !rlang::is_scalar_integer(subtitle_margin)) {
-    cli::cli_abort("{.arg subtitle_margin} must be a single number.")
-  }
-  if (subtitle_margin < 0) {
-    cli::cli_abort("{.arg subtitle_margin} must be a non-negative number.")
-  }
-
-  if (!rlang::is_scalar_double(plot_title_size) && !rlang::is_scalar_integer(plot_title_size)) {
-    cli::cli_abort("{.arg plot_title_size} must be a single number.")
-  }
-  if (plot_title_size <= 0) {
-    cli::cli_abort("{.arg plot_title_size} must be greater than 0.")
-  }
-
-  if (!rlang::is_scalar_double(plot_title_margin) && !rlang::is_scalar_integer(plot_title_margin)) {
-    cli::cli_abort("{.arg plot_title_margin} must be a single number.")
-  }
-  if (plot_title_margin < 0) {
-    cli::cli_abort("{.arg plot_title_margin} must be a non-negative number.")
-  }
-
-  # Validate strip_color
   if (!rlang::is_string(strip_color)) {
     cli::cli_abort("{.arg strip_color} must be a single string.")
   }
 
   rlang::check_installed("grDevices")
-  # Validate colour input
   tryCatch(
     grDevices::col2rgb(strip_color),
     error = function(e) {
@@ -158,17 +136,13 @@ validate_theme <- function(base_size,
 }
 
 
-valider_font <- function(font_family) {
-  # Validated font_family
+validate_font <- function(font_family) {
   if (!rlang::is_string(font_family)) {
     cli::cli_abort("{.arg font_family} must be a single string.")
   }
 
-  parsed_font <- unlist(strsplit(font_family, " ", ))[[1]]
-
   available_fonts <- systemfonts::system_fonts()$family
-
-  font_exist <- any(grepl(parsed_font, available_fonts, ignore.case = TRUE))
+  font_exist <- any(grepl(font_family, available_fonts, ignore.case = TRUE))
 
   if (!font_exist) {
     cli::cli_alert_warning(
