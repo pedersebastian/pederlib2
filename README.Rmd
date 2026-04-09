@@ -17,43 +17,70 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/pederlib2)](https://CRAN.R-project.org/package=pederlib2)
 [![R-CMD-check](https://github.com/pedersebastian/pederlib2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pedersebastian/pederlib2/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/pedersebastian/pederlib2/graph/badge.svg)](https://app.codecov.io/gh/pedersebastian/pederlib2)
 <!-- badges: end -->
 
-The goal of pederlib2 is to ...
+Personal R package with utility functions for data analysis and visualization.
 
 ## Installation
 
-You can install the development version of pederlib2 from [GitHub](https://github.com/) with:
-
-``` r
+```r
 # install.packages("pak")
 pak::pak("pedersebastian/pederlib2")
 ```
 
-## Example
+## Functions
 
-This is a basic example which shows you how to solve a common problem:
+### `startup()`
 
-```{r example}
+Loads tidyverse + readxl, sets ggplot2 geom defaults and applies `theme_pedr()` in one call.
+
+```{r startup, message = FALSE}
 library(pederlib2)
-## basic example code
+
+startup(quiet = TRUE)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Pass `2` to also load tidymodels core packages:
 
-```{r cars}
-summary(cars)
+```r
+startup(2)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+### `theme_pedr()`
 
-You can also embed plots, for example:
+A clean ggplot2 theme based on `theme_minimal`, with centered titles, styled facet strips and optional font.
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r theme, message = FALSE, warning = FALSE}
+library(ggplot2)
+
+ggplot(mpg, aes(displ, hwy, color = factor(cyl))) +
+  geom_point() +
+  facet_wrap(vars(drv)) +
+  labs(
+    title = "Engine size vs. fuel efficiency",
+    subtitle = "Grouped by drive type",
+    color = "Cylinders"
+  ) +
+  theme_pedr(font_family = "serif")
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+### `komma()`
+
+Norwegian number formatting for ggplot2 scales — comma as decimal mark, period as thousands separator.
+
+```{r komma, message = FALSE}
+ggplot(diamonds, aes(cut, price)) +
+  geom_boxplot() +
+  scale_y_continuous(labels = komma()) +
+  theme_pedr(font_family = "serif")
+```
+
+### `list_locale()`
+
+Lists all locales available on the system.
+
+```{r locale}
+head(list_locale(), 10)
+```
