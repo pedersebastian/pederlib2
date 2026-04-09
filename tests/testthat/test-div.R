@@ -4,14 +4,14 @@ test_that("komma() returns a function", {
 
 test_that("komma() formats integers with Norwegian thousands separator", {
   fmt <- komma()
-  expect_equal(fmt(1000),    "1.000")
+  expect_equal(fmt(1000), "1.000")
   expect_equal(fmt(1000000), "1.000.000")
 })
 
 test_that("komma() formats decimals with Norwegian notation", {
   fmt <- komma(accuracy = 0.1)
   expect_equal(fmt(1000.5), "1.000,5")
-  expect_equal(fmt(0.5),    "0,5")
+  expect_equal(fmt(0.5), "0,5")
 })
 
 test_that("komma() passes accuracy to scales::comma_format", {
