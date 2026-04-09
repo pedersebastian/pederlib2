@@ -8,8 +8,6 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/pedersebastian/pederlib2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pedersebastian/pederlib2/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/pedersebastian/pederlib2/graph/badge.svg)](https://app.codecov.io/gh/pedersebastian/pederlib2)
 <!-- badges: end -->
 
 Personal R package with utility functions for data analysis and
